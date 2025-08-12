@@ -5,13 +5,13 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/Products");
+    navigate("/products");
   };
 
   return (
     <>
-      <div className="mt-1 h-56 sm:h-64 xl:h-80 2xl:h-96">
-        <Carousel slide={false}>
+      <div className="mt-1 h-56 sm:h-80 xl:h-[28rem] 2xl:h-[32rem] rounded-xl overflow-hidden">
+        <Carousel slide={false} className="rounded-xl">
           <img
             onClick={handleClick}
             className="w-full"

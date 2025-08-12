@@ -15,11 +15,9 @@ const FilterReducer = (state, action) => {
       return { ...state, grid_view: true };
 
     case "GET_SORT_VALUE":
-      let userSortValue = document.getElementById("sort");
-      let sort_value = userSortValue.options[userSortValue.selectedIndex].value;
       return {
         ...state,
-        sorting_value: sort_value,
+        sorting_value: action.payload,
       };
 
     case "SORTING_PRODUCTS":
@@ -44,6 +42,7 @@ const FilterReducer = (state, action) => {
         if (sorting_value === "z-a") {
           return b.name.localeCompare(a.name);
         }
+        return 0;
       };
 
       newSortData = tempSortProduct.sort(sortingProducts);
@@ -117,9 +116,8 @@ const FilterReducer = (state, action) => {
           category: "all",
           company: "all",
           color: "all",
-          maxPrice: 0,
           price: state.filters.maxPrice,
-          minPrice: state.filters.maxPrice,
+          minPrice: 0,
         },
       };
 

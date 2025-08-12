@@ -5,21 +5,40 @@ const FeaturedProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
 
   if (isLoading) {
-    return;
-  }
-  return (
-    <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
-          <div className="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
-            <h2 className="my-2 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+    return (
+      <section className="bg-white">
+        <div className="max-w-7xl px-4 py-12 mx-auto">
+          <div className="max-w-md mx-auto mb-8 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight">
               Our Products
             </h2>
           </div>
-          <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-            {featureProducts.map((curElem) => {
-              return <Product key={curElem.id} {...curElem} />;
-            })}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="card p-4">
+                <div className="skeleton h-40 w-full mb-4" />
+                <div className="skeleton h-4 w-2/3 mb-2" />
+                <div className="skeleton h-4 w-1/3" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+  return (
+    <>
+      <section className="bg-white">
+        <div className="max-w-7xl px-4 py-12 mx-auto">
+          <div className="max-w-md mx-auto mb-8 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Our Products
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featureProducts.map((curElem) => (
+              <Product key={curElem.id} {...curElem} />
+            ))}
           </div>
         </div>
       </section>

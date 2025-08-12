@@ -1,70 +1,72 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../Context/CartContext";
 
 const NavBar = () => {
+  const { total_item } = useCartContext();
   return (
     <>
-      <nav className="bg-white  dark:bg-gray-900">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <NavLink to="" className="flex items-center">
-            <img src="" className="h-8 mr-3" alt="" />
-            <span className="border-slate-600 self-center text-2xl font-bold whitespace-nowrap dark:text-white">
+      <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <NavLink to="/" className="flex items-center gap-2">
+            <span className="inline-block h-8 w-8 rounded-lg bg-indigo-600"></span>
+            <span className="text-xl font-semibold tracking-tight">
               ElectriKart
             </span>
           </NavLink>
-          <div className="flex items-center">
-            <a
-              href="/cart"
-              className="text-xl font-semibold text-purple-500 dark:text-blue-500 hover:underline"
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `hover:text-indigo-600 ${
+                  isActive ? "text-indigo-600 font-medium" : "text-slate-700"
+                }`
+              }
             >
-              My Cart
-            </a>
-          </div>
+              Home
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `hover:text-indigo-600 ${
+                  isActive ? "text-indigo-600 font-medium" : "text-slate-700"
+                }`
+              }
+            >
+              Products
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `hover:text-indigo-600 ${
+                  isActive ? "text-indigo-600 font-medium" : "text-slate-700"
+                }`
+              }
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `hover:text-indigo-600 ${
+                  isActive ? "text-indigo-600 font-medium" : "text-slate-700"
+                }`
+              }
+            >
+              Contact
+            </NavLink>
+          </nav>
+          <NavLink
+            to="/cart"
+            className="relative inline-flex items-center justify-center rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200"
+          >
+            <span>Cart</span>
+            <span className="ml-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-indigo-600 px-1.5 text-xs font-semibold text-white">
+              {total_item || 0}
+            </span>
+          </NavLink>
         </div>
-      </nav>
-      <hr />
-      <nav className=" dark:bg-gray-700">
-        <div className="max-w-screen-xl px-4 py-3 flex justify-center mx-auto">
-          <div className="flex items-center">
-            <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
-              <li>
-                <NavLink
-                  to="/"
-                  className="text-gray-900 dark:text-white hover:underline"
-                  aria-current="page"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/products"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  Products
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  Contact Us
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <hr />
+      </header>
     </>
   );
 };

@@ -1,12 +1,12 @@
-import React from 'react'
-import ContactForm from '../Components/ContactForm';
+import React from "react";
+import ContactForm from "../Components/ContactForm";
 
 const Contact = () => {
   return (
-   <>
-     <ContactForm/>
-   </>
-  )
-}
+    <div className="max-w-3xl mx-auto">
+      <ContactForm />
+    </div>
+  );
+};
 
-export default Contact
+export default Contact;

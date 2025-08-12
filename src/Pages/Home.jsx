@@ -5,15 +5,14 @@ import Services from "../Components/Services";
 import FeaturedProducts from "../Components/FeaturedProducts";
 
 const Home = () => {
-  const data = {
-    name: "HomePage",
-  };
   return (
     <>
-      <HeroSection mydata={data} />
-      <Services />
-      <FeaturedProducts />
-      <Trusted />
+      <HeroSection />
+      <section className="px-4 mx-auto max-w-7xl">
+        <Services />
+        <FeaturedProducts />
+        <Trusted />
+      </section>
     </>
   );
 };

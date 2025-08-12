@@ -8,7 +8,7 @@ const initialState = {
   filter_products: [],
   all_products: [],
   grid_view: true,
-  sorting_value: "lowest",
+  sorting_value: "relevance",
   filters: {
     text: "",
     category: "all",
@@ -33,7 +33,7 @@ export const FilterContextProvider = ({ children }) => {
 
   // sorting function
   const sorting = (event) => {
-    let userValue = event.target.value;
+    const userValue = event.target.value;
     dispatch({ type: "GET_SORT_VALUE", payload: userValue });
   };
 

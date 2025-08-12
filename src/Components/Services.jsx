@@ -1,42 +1,47 @@
 import React from "react";
+import { TbTruckDelivery } from "react-icons/tb";
+import { BiRefresh } from "react-icons/bi";
+import { HiOutlineSupport } from "react-icons/hi";
+
+const items = [
+  {
+    title: "Free Shipping",
+    icon: TbTruckDelivery,
+    desc: "Orders over ₹500 ship free anywhere in India.",
+  },
+  {
+    title: "Easy Returns",
+    icon: BiRefresh,
+    desc: "Not happy with your purchase? Hassle-free returns.",
+  },
+  {
+    title: "24/7 Support",
+    icon: HiOutlineSupport,
+    desc: "We’re here to help, any time of the day.",
+  },
+];
 
 const Services = () => {
   return (
-    <div className="bg-gray-100 py-16">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-16">
       <div className="text-center">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Our Services
-        </h2>
-        <p className="mt-4 text-lg text-gray-500">
-          We offer a variety of services to help make your shopping experience as
-          easy and enjoyable as possible.
+        <h2 className="text-2xl font-semibold tracking-tight">Our Services</h2>
+        <p className="mt-2 text-slate-600">
+          We make your shopping simple, fast, and delightful.
         </p>
       </div>
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h3 className="text-xl font-bold mb-2">Free Shipping</h3>
-          <p className="text-gray-600">
-            All orders over 500 Rs qualify for free shipping within the India.
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h3 className="text-xl font-bold mb-2">Easy Returns</h3>
-          <p className="text-gray-600">
-            Not happy with your purchase? No problem! We offer hassle-free returns.
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h3 className="text-xl font-bold mb-2">24/7 Customer Support</h3>
-          <p className="text-gray-600">
-            Our customer support team is available around the clock to help with any
-            questions or concerns you may have.
-          </p>
-        </div>
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map(({ title, desc, icon: Icon }) => (
+          <div key={title} className="card p-6">
+            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <Icon size={20} />
+            </div>
+            <h3 className="text-base font-semibold">{title}</h3>
+            <p className="mt-1 text-sm text-slate-600">{desc}</p>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-  
   );
 };
 

@@ -74,7 +74,7 @@ const FilterSection = () => {
                 name="company"
                 id="company"
                 className="w-full bg-gray-100 bg-opacity-50 rounded-full border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 pr-9 leading-8 transition-colors duration-200 ease-in-out capitalize"
-                onClick={updateFilterValue}
+                onChange={updateFilterValue}
               >
                 {companyData.map((curElem, index) => {
                   return (
@@ -122,7 +122,7 @@ const FilterSection = () => {
                     onClick={updateFilterValue}
                   >
                     {color === curColor ? (
-                      <FaCheck className="checkStyle" />
+                      <FaCheck className="text-white text-xs" />
                     ) : null}
                   </button>
                 );

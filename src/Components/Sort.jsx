@@ -11,19 +11,19 @@ const Sort = () => {
             <select
               name="sort"
               id="sort"
-              className="py-2.5 px-5 pr-8 mr-2 mb-2 text-sm font-normal text-gray-500 focus  bg-white rounded-full  border-purple-600  hover:border-purple-600 hover:bg-gray-100 hover:text-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              onClick={sorting}
+              className="py-2.5 px-5 pr-8 mr-2 mb-2 text-sm font-normal text-slate-700 bg-white rounded-lg border border-slate-300 hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              onChange={sorting}
             >
-              <option value="">Relevance</option>
-              <option value="low-to-high">Price Low to High</option>
-              <option value="high-to-low">Price High to Low</option>
-              <option value="a-z">Price (a-z)</option>
-              <option value="z-a">Price (z-a)</option>
+              <option value="relevance">Relevance</option>
+              <option value="low-to-high">Price: Low to High</option>
+              <option value="high-to-low">Price: High to Low</option>
+              <option value="a-z">Name: A–Z</option>
+              <option value="z-a">Name: Z–A</option>
             </select>
           </div>
         </div>
         <div className="flex justify-center">
-          <span className="py-2.5 px-5 mr-2 mb-2 text-sm font-normal text-gray-500  border-purple-600  hover:border-purple-600  bg-white rounded-full border hover:bg-gray-100 hover:text-black dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{`Product Available ${filter_products.length}`}</span>
+          <span className="py-2.5 px-5 mr-2 mb-2 text-sm font-normal text-slate-600 bg-white rounded-lg border border-slate-300">{`Product Available ${filter_products.length}`}</span>
         </div>
       </div>
     </>

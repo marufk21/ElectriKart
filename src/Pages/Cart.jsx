@@ -8,11 +8,20 @@ const Cart = () => {
   // console.log("🚀 ~ file: Cart.js ~ line 6 ~ Cart ~ cart", cart);
 
   if (cart.length === 0) {
-    return <h3>No Cart in Item </h3>;
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-24 text-center">
+        <h3 className="text-lg font-medium text-slate-700">
+          Your cart is empty
+        </h3>
+        <NavLink to="/products" className="inline-block mt-6 btn btn-primary">
+          Browse products
+        </NavLink>
+      </div>
+    );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg px-6 py-8 sm:px-8 sm:py-10 md:py-12">
+    <div className="card px-6 py-8 sm:px-8 sm:py-10 md:py-12 max-w-3xl mx-auto">
       <div className="space-y-6">
         <div className="flex justify-center">
           <p className="text-lg font-bold">Your Cart</p>

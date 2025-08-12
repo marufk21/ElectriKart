@@ -1,32 +1,37 @@
 function About() {
   return (
-    <div className="container mx-auto px-4 lg:px-0 py-8">
-      <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-        Welcome to Our Store
-      </h2>
-      <p className="text-lg lg:text-xl mb-6">
-        We offer the latest and greatest electronics at affordable prices, and
-        our team of experts carefully selects each product in our store.
-      </p>
-      <p className="text-lg lg:text-xl mb-6">
-        Our mission is to provide our customers with a wide range of
-        high-quality electronics at affordable prices. We believe that everyone
-        should have access to the latest technology, and we're dedicated to
-        making that a reality.
-      </p>
-      <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-        Our Promise to You
-      </h2>
-      <p className="text-lg lg:text-xl mb-6">
-        At our store, we stand behind every product we sell. We're committed to
-        providing our customers with high-quality products that meet their needs
-        and exceed their expectations.
-      </p>
-      <p className="text-lg lg:text-xl mb-6">
-        If for any reason you're not completely satisfied with your purchase,
-        we'll do everything we can to make it right. We value your trust and are
-        committed to providing a safe and secure shopping experience.
-      </p>
+    <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="grid gap-8 md:grid-cols-2 items-center">
+        <div className="card overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
+            alt="About ElectriKart"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold tracking-tight">Welcome to ElectriKart</h2>
+          <p className="mt-4 text-slate-700">
+            We curate the best electronics at honest prices. Our experts hand-pick products that offer
+            outstanding value, design, and reliability.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="card p-6">
+              <h3 className="text-base font-semibold">Our Mission</h3>
+              <p className="mt-1 text-sm text-slate-600">
+                Make cutting-edge tech accessible to everyone with a seamless shopping experience.
+              </p>
+            </div>
+            <div className="card p-6">
+              <h3 className="text-base font-semibold">Our Promise</h3>
+              <p className="mt-1 text-sm text-slate-600">
+                We stand behind everything we sell. If you’re not happy, we’ll make it right.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

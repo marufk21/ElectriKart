@@ -1,28 +1,31 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Card } from "flowbite-react";
 import FormatPrice from "../Helpers/FormatPrice";
 
 const Product = (curElem) => {
   const { id, image, name, price } = curElem;
 
   return (
-    <>
-      <NavLink to={`/singleproduct/${id}`}>
-        <div className="flex flex-col items-center justify-center sm:my-3 max-w-md mx-auto text-center text-gray-900 bg-white border rounded-lg shadow dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-          <Card imgAlt={name} imgSrc={image}>
-            <h5 className="text-xl font-semibold capitalize tracking-tight text-gray-900 dark:text-white">
-              {name}
-            </h5>
-            <div className="flex items-center justify-between mt-3">
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                {<FormatPrice price={price} />}
-              </span>
-            </div>
-          </Card>
+    <NavLink to={`/singleproduct/${id}`} className="group">
+      <div className="card overflow-hidden">
+        <div className="relative w-full pt-[66%] bg-slate-100">
+          <img
+            alt={name}
+            src={image}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
         </div>
-      </NavLink>
-    </>
+        <div className="p-4">
+          <h3 className="text-base font-semibold capitalize tracking-tight text-slate-900 line-clamp-1">
+            {name}
+          </h3>
+          <div className="mt-2 text-indigo-600 font-semibold text-sm">
+            <FormatPrice price={price} />
+          </div>
+        </div>
+      </div>
+    </NavLink>
   );
 };
 
