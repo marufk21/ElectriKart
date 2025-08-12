@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaSearch } from "react-icons/fa";
 import { useFilterContext } from "../Context/FilterContext";
 import FormatPrice from "../Helpers/FormatPrice";
 const FilterSection = () => {
@@ -28,133 +28,150 @@ const FilterSection = () => {
 
   return (
     <>
-      <aside className="w-full sm:w-64 sticky top-12" aria-label="Sidebar">
-        <div className="px-3 py-2 pb-5 rounded dark:bg-gray-800">
-          <div className="flex flex-col items-center mb-4">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input
-                className="w-full bg-gray-100 bg-opacity-50 rounded-full border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                type="text"
-                name="text"
-                placeholder="Search for products"
-                value={text}
-                onChange={updateFilterValue}
-              />
-            </form>
-          </div>
+      <aside className="w-full" aria-label="Sidebar">
+        <div className="card p-3">
+          <div className="space-y-4 divide-y divide-slate-200/80">
+            {/* Search */}
+            <div className="pt-1">
+              <form onSubmit={(e) => e.preventDefault()} className="relative">
+                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  className="w-full rounded-lg border border-slate-300 pl-9 pr-3 py-2 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+                  type="text"
+                  name="text"
+                  placeholder="Search products"
+                  value={text}
+                  onChange={updateFilterValue}
+                />
+              </form>
+            </div>
 
-          <div className="flex flex-col items-center mb-4">
-            <h3 className="mb-2 text-lg font-normal text-gray-500">Category</h3>
-            <span className="flex flex-col">
-              {categoryData.map((curElem, index) => {
-                return (
-                  <button
-                    key={index}
-                    type="button"
-                    name="category"
-                    value={curElem}
-                    className={
-                      curElem === category
-                        ? "capitalize  text-lg font-normal text-purple-600"
-                        : "capitalize  text-lg font-normal text-gray-500"
-                    }
-                    onClick={updateFilterValue}
-                  >
-                    {curElem}
-                  </button>
-                );
-              })}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center mb-4">
-            <h3 className="mb-2 text-lg font-normal text-gray-500">Company</h3>
-            <form action="#">
-              <select
-                name="company"
-                id="company"
-                className="w-full bg-gray-100 bg-opacity-50 rounded-full border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 pr-9 leading-8 transition-colors duration-200 ease-in-out capitalize"
-                onChange={updateFilterValue}
-              >
-                {companyData.map((curElem, index) => {
-                  return (
-                    <option key={index} value={curElem} name="company">
-                      {curElem}
-                    </option>
-                  );
-                })}
-              </select>
-            </form>
-          </div>
-
-          <div className="flex flex-col items-center mb-4">
-            <h3 className="text-lg font-normal text-gray-500">Colors</h3>
-            <div className="flex items-end flex-wrap space-x-px">
-              {colorsData.map((curColor, index) => {
-                if (curColor === "all") {
+            {/* Category */}
+            <div className="pt-4">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Category
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {categoryData.map((categoryName, index) => {
+                  const isSelected = categoryName === category;
                   return (
                     <button
                       key={index}
                       type="button"
-                      value={curColor}
-                      name="color"
-                      className=""
+                      name="category"
+                      value={categoryName}
                       onClick={updateFilterValue}
+                      className={`px-2.5 py-1 rounded-full text-xs transition-colors border ${
+                        isSelected
+                          ? "bg-indigo-50 text-indigo-700 border-indigo-200"
+                          : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                      } capitalize`}
+                      aria-pressed={isSelected}
                     >
-                      <span className="text-base font-normal text-gray-500">
-                        All
-                      </span>
+                      {categoryName}
                     </button>
                   );
-                }
-                return (
-                  <button
-                    key={index}
-                    type="button"
-                    value={curColor}
-                    name="color"
-                    style={{ backgroundColor: curColor }}
-                    className={
-                      color === curColor
-                        ? "mt-2 border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none opacity-100"
-                        : "mt-2 border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"
-                    }
-                    onClick={updateFilterValue}
-                  >
-                    {color === curColor ? (
-                      <FaCheck className="text-white text-xs" />
-                    ) : null}
-                  </button>
-                );
-              })}
+                })}
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col items-center mt-5">
-            <div className="flex space-x-3">
-              <h3 className="text-lg font-normal text-gray-500">Price</h3>
-              <p className="text-lg font-normal text-gray-500">
-                <FormatPrice price={price} />
-              </p>
+            {/* Company */}
+            <div className="pt-4">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Company
+              </h3>
+              <select
+                name="company"
+                id="company"
+                className="w-full rounded-md border border-slate-300 bg-white py-1.5 px-3 text-sm text-slate-700 capitalize focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                onChange={updateFilterValue}
+              >
+                {companyData.map((companyName, index) => (
+                  <option key={index} value={companyName} name="company">
+                    {companyName}
+                  </option>
+                ))}
+              </select>
             </div>
-            <input
-              className="my-2 accent-purple-500"
-              type="range"
-              name="price"
-              min={minPrice}
-              max={maxPrice}
-              value={price}
-              onChange={updateFilterValue}
-            />
-          </div>
 
-          <div className="flex justify-center mt-1">
-            <button
-              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-3 py-1.5 text-center mr-2 mb-2"
-              onClick={clearFilters}
-            >
-              Clear Filters
-            </button>
+            {/* Colors */}
+            <div className="pt-4">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Colors
+              </h3>
+              <div className="flex flex-wrap items-center gap-2">
+                {colorsData.map((currentColor, index) => {
+                  if (currentColor === "all") {
+                    return (
+                      <button
+                        key={index}
+                        type="button"
+                        value={currentColor}
+                        name="color"
+                        className="px-2.5 py-1 rounded-full text-xs border border-slate-200 text-slate-600 hover:bg-slate-50"
+                        onClick={updateFilterValue}
+                      >
+                        All
+                      </button>
+                    );
+                  }
+
+                  const isActive = color === currentColor;
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      value={currentColor}
+                      name="color"
+                      onClick={updateFilterValue}
+                      className={`relative grid place-items-center h-6 w-6 rounded-full border ${
+                        isActive
+                          ? "ring-2 ring-offset-1 ring-indigo-500 border-transparent"
+                          : "border-slate-300"
+                      }`}
+                      style={{ backgroundColor: currentColor }}
+                      aria-label={currentColor}
+                      aria-pressed={isActive}
+                    >
+                      {isActive ? (
+                        <FaCheck className="text-white text-[9px]" />
+                      ) : null}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Price */}
+            <div className="pt-4">
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Price
+                </h3>
+                <p className="text-sm font-medium text-slate-700">
+                  <FormatPrice price={price} />
+                </p>
+              </div>
+              <input
+                className="w-full accent-indigo-600"
+                type="range"
+                name="price"
+                min={minPrice}
+                max={maxPrice}
+                value={price}
+                onChange={updateFilterValue}
+              />
+            </div>
+
+            {/* Clear */}
+            <div className="pt-4">
+              <button
+                className="w-full btn btn-ghost border border-slate-300 py-1.5 text-sm"
+                onClick={clearFilters}
+              >
+                Clear filters
+              </button>
+            </div>
           </div>
         </div>
       </aside>

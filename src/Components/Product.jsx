@@ -7,7 +7,7 @@ const Product = (curElem) => {
 
   return (
     <NavLink to={`/singleproduct/${id}`} className="group">
-      <div className="card overflow-hidden">
+      <div className="card overflow-hidden transition-shadow hover:shadow-md">
         <div className="relative w-full pt-[66%] bg-slate-100">
           <img
             alt={name}

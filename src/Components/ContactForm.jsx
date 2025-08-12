@@ -5,8 +5,8 @@ const ContactForm = () => {
   const [state, handleSubmit] = useForm("xdovoeea");
   if (state.succeeded) {
     return (
-      <div className="flex justify-center py-24">
-        <div className="card max-w-md w-full p-6 text-center">
+      <div className="flex justify-center py-22">
+        <div className="card max-w-8xl w-full p-0 text-center">
           <div className="mx-auto mb-3 h-10 w-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
             ✓
           </div>

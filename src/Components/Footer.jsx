@@ -7,7 +7,6 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-8">
           <div className="flex items-center gap-3">
-            <span className="inline-block h-7 w-7 rounded-md bg-indigo-600"></span>
             <span className="text-sm text-slate-600">
               © {new Date().getFullYear()} ElectriKart
             </span>

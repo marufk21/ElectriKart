@@ -9,7 +9,11 @@ const NavBar = () => {
       <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2">
-            <span className="inline-block h-8 w-8 rounded-lg bg-indigo-600"></span>
+            {/* <img
+              src="/logo192.png"
+              alt="ElectriKart logo"
+              className="h-8 w-8 rounded-lg"
+            /> */}
             <span className="text-xl font-semibold tracking-tight">
               ElectriKart
             </span>

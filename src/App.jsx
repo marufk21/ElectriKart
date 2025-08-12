@@ -20,22 +20,24 @@ const App = () => {
         <ProductState>
           <FilterContextProvider>
             <CartProvider>
-              <NavBar />
-              <main className="max-w-7xl mx-auto px-4 py-8">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route
-                    path="/singleproduct/:id"
-                    element={<SingleProduct />}
-                  />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="*" element={<ErrorPage />} />
-                </Routes>
-              </main>
-              <Footer />
+              <div className="min-h-screen flex flex-col">
+                <NavBar />
+                <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route
+                      path="/singleproduct/:id"
+                      element={<SingleProduct />}
+                    />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="*" element={<ErrorPage />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
             </CartProvider>
           </FilterContextProvider>
         </ProductState>
